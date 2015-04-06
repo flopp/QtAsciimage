@@ -5,6 +5,7 @@ This is a C++/Qt version of (Charles Parnot)[https://twitter.com/cparnot]'s (ASC
 
 ## Format Extension
 QtAsciimage uses an extended format allowing for a direct styling of the individual ASCIImage shapes. The styling rules are appended to the ASCIImage, separated by a line containing three dashes `---` only:
+
     . . . . 5 . . . .
     . . . . # . . . .
     . . . . # . . . .
