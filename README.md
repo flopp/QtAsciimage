@@ -1,6 +1,44 @@
 # QtAsciimage
 QtAsciimage - Asciimage for Qt Applications
 
+This is a C++/Qt version of (Charles Parnot)[https://twitter.com/cparnot]'s (ASCIImage)[http://asciimage.org/] format. ASCIImage let's you specify simple images directly in your source code using 'ASCII art'.
+
+## Format Extension
+QtAsciimage uses an extended format allowing for a direct styling of the individual ASCIImage shapes. The styling rules are appended to the ASCIImage, separated by a line containing three dashes `---` only:
+    . . . . 5 . . . .
+    . . . . # . . . .
+    . . . . # . . . .
+    . . . . # . . . .
+    . . 1 . # . 3 . .
+    . . . # 5 # . . .
+    6 . . . 2 . . . 9
+    # . . . . . . . #
+    7 # # # # # # # 8
+    ---
+    1 open color=#FF0000
+    5 color=#FF0000
+    6 open 
+
+A styling rule contains of a shape identifier (the character that is used in the ASCIImage to start the corresponding shape) and a set of styling options:
+    
+    ID [color=#RRGGBB] [open] [empty] [cutting]
+
+*   `color=#RRGGBB`
+Applicable to all shape types.
+The shape is drawn in the given hex-color instead of the default color (black).
+
+*   `open`
+Applicable to polygons.
+The shape is not automatically closed, and thus drawn as a polyline instead of a polygon. 
+
+*   `empty`
+Applicable to ellipses and polygons.
+The shape is not filled; only the edge is drawn.
+
+*   `cutting`
+Applicable to all shape types.
+Instead of drawing the shape, it is cut out of the previsously drawn shapes, leaving a 'hole'.
+
 
 ## Usage 
 To include QtAsciimage into your QMake-based project, copy the QtAsciimage directory to your project tree and `include()` QtAsciimage's `pri`-file in you main QMake-file:
