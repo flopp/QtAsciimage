@@ -28,7 +28,7 @@ Of course you need to `include()` QtAsciimage's header files (`QtAsciimage/image
 
 ### Rendering via QIconEngine
 
-   asciimage::Image asciiSaveIcon({
+    asciimage::Image asciiSaveIcon({
       ". . . . 5 . . . .",
       ". . . . # . . . .",
       ". . . . # . . . .",
