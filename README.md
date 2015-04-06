@@ -1,7 +1,7 @@
 # QtAsciimage
 QtAsciimage - Asciimage for Qt Applications
 
-This is a C++/Qt version of (Charles Parnot)[https://twitter.com/cparnot]'s (ASCIImage)[http://asciimage.org/] format. ASCIImage let's you specify simple images directly in your source code using 'ASCII art'.
+This is a C++/Qt version of [Charles Parnot](https://twitter.com/cparnot)'s [ASCIImage](http://asciimage.org/) format. ASCIImage let's you specify simple images directly in your source code using 'ASCII art'.
 
 ## Format Extension
 QtAsciimage uses an extended format allowing for a direct styling of the individual ASCIImage shapes. The styling rules are appended to the ASCIImage, separated by a line containing three dashes `---` only:
@@ -40,6 +40,7 @@ The shape is not filled; only the edge is drawn.
 Applicable to all shape types.
 Instead of drawing the shape, it is cut out of the previsously drawn shapes, leaving a 'hole'.
 
+Styling rules and the styling rules section are completely optional; if there is no styling rule for a shape, it is drawn in the default style (black color, closed, and filled).
 
 ## Usage 
 To include QtAsciimage into your QMake-based project, copy the QtAsciimage directory to your project tree and `include()` QtAsciimage's `pri`-file in you main QMake-file:
