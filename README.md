@@ -24,6 +24,9 @@ A styling rule contains of a shape identifier (the character that is used in the
     
     ID [color=#RRGGBB] [open] [empty] [cutting]
 
+*   `ID`
+Shape identifier. The character that is used to start the curresponding shape. E.g. in the above example the polyline made from the consecutive characters `6`, `7`, `8`, `9` is identified by the shaped first character `6`. 
+
 *   `color=#RRGGBB`
 Applicable to all shape types.
 The shape is drawn in the given hex-color instead of the default color (black).
@@ -51,41 +54,52 @@ Of course you need to `include()` QtAsciimage's header files (`QtAsciimage/image
 
 ### Rendering to QImage
 
-    asciimage::Image asciiSun({
-      ". . . . 8 . . . .",
-      ". 7 . . 8 . . 9 .",
-      ". . 7 . . . 9 . .",
-      ". . . . 1 . . . .",
-      "6 6 . 1 # 1 . 2 2",
-      ". . . . 1 . . . .",
-      ". . 5 . . . 3 . .",
-      ". 5 . . 4 . . 3 .",
-      ". . . . 4 . . . ."
-    });
-    
-    int scale = 4;
-    QImage result = asciiSun.render(scale);
+```C++
+#include <QtAsciimage/image.h>
+// ...
+
+asciimage::Image asciiSun({
+  ". . . . 8 . . . .",
+  ". 7 . . 8 . . 9 .",
+  ". . 7 . . . 9 . .",
+  ". . . . 1 . . . .",
+  "6 6 . 1 # 1 . 2 2",
+  ". . . . 1 . . . .",
+  ". . 5 . . . 3 . .",
+  ". 5 . . 4 . . 3 .",
+  ". . . . 4 . . . ."
+});
+
+int scale = 4;
+QImage result = asciiSun.render(scale);
+```
 
 ### Rendering via QIconEngine
 
-    asciimage::Image asciiSaveIcon({
-      ". . . . 5 . . . .",
-      ". . . . # . . . .",
-      ". . . . # . . . .",
-      ". . . . # . . . .",
-      ". . 1 . # . 3 . .",
-      ". . . # 5 # . . .",
-      "6 . . . 2 . . . 9",
-      "# . . . . . . . #",
-      "7 # # # # # # # 8",
-      "---",
-      "1 open",
-      "6 open"
-    });
-    QIconEngine* iconEngine = new asciimage::IconEngine(asciiSaveIcon);
-    QAction* saveAction = new QAction("Save", this);
-    saveAction->setIcon(QIcon(iconEngine));
-    // add saveAction to a toolbar/menu to display the icon
+```C++
+#include <QtAsciimage/image.h>
+#include <QtAsciimage/iconengine.h>
+// ...
+
+asciimage::Image asciiSaveIcon({
+  ". . . . 5 . . . .",
+  ". . . . # . . . .",
+  ". . . . # . . . .",
+  ". . . . # . . . .",
+  ". . 1 . # . 3 . .",
+  ". . . # 5 # . . .",
+  "6 . . . 2 . . . 9",
+  "# . . . . . . . #",
+  "7 # # # # # # # 8",
+  "---",
+  "1 open",
+  "6 open"
+});
+QIconEngine* iconEngine = new asciimage::IconEngine(asciiSaveIcon);
+QAction* saveAction = new QAction("Save", this);
+saveAction->setIcon(QIcon(iconEngine));
+// add saveAction to a toolbar/menu to display the icon
+```
 
 ## Demo Program / QtAsciimageEditor
 
