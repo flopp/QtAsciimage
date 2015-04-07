@@ -23,18 +23,18 @@
 #ifndef QT_ASCIIMAGE_IMAGE_H
 #define QT_ASCIIMAGE_IMAGE_H
 
+#include "shape.h"
 #include "style.h"
 #include <QHash>
 #include <QImage>
 #include <QList>
 #include <QPoint>
+#include <QSharedPointer>
 #include <QString>
 class QPainter;
 
 namespace asciimage
 {
-  class Shape;
-
   class Image {
     public:
       Image();

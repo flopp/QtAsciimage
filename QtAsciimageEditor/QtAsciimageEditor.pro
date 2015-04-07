@@ -1,7 +1,13 @@
 TARGET = QtAsciimageEditor
 TEMPLATE = app
-CONFIG += c++11
-QT += core gui widgets
+QT += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4) {
+    CONFIG += c++11
+    QT += widgets
+} else {
+    QMAKE_CXXFLAGS += -std=c++0x
+}
 
 HEADERS += mainWindow.h newImageDialog.h
 SOURCES += main.cpp mainWindow.cpp newImageDialog.cpp

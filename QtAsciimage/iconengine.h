@@ -23,19 +23,27 @@
 #ifndef QT_ASCIIMAGE_ICON_ENGINE_H
 #define QT_ASCIIMAGE_ICON_ENGINE_H
 
-#include <QIconEngine>
 #include "image.h"
+
+// QIconEngineV2 is replaced by QIconEngine in Qt >= 5.0.0
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    #include <QIconEngine>
+    #define ICON_ENGINE_BASE_CLASS QIconEngine
+#else
+    #include <QIconEngineV2>
+    #define ICON_ENGINE_BASE_CLASS QIconEngineV2
+#endif
 
 namespace asciimage
 {
-  class IconEngine : public QIconEngine
+  class IconEngine : public ICON_ENGINE_BASE_CLASS
   {
     public:
       IconEngine(const asciimage::Image& image);
       virtual ~IconEngine();
 
       virtual QSize actualSize(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
-      virtual QIconEngine* clone() const override;
+      virtual ICON_ENGINE_BASE_CLASS* clone() const override { return new IconEngine(m_image); }
       virtual void paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) override;
       virtual QPixmap pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) override;
 

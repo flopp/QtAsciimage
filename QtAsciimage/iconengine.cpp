@@ -47,12 +47,6 @@ QSize asciimage::IconEngine::actualSize(const QSize& size, QIcon::Mode mode, QIc
 }
 
 
-QIconEngine* asciimage::IconEngine::clone() const
-{
-  return new IconEngine(m_image);
-}
-
-
 void asciimage::IconEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state)
 {
   Q_UNUSED(state);
